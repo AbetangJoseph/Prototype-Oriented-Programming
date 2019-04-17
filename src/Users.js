@@ -1,4 +1,5 @@
 let DB = require("./tempDB");
+console.log(DB);
 
 //ID
 let id = 0;
@@ -16,4 +17,14 @@ function User(name, email, password) {
   this.id = idGenerator();
 }
 
+User.prototype.save = function() {
+  user = {
+    name: this.name,
+    email: this.email,
+    password: this.password,
+    isAdmin: this.isAdmin,
+    id: this.id
+  };
+  DB["Users"].push(user) ? "saved" : "error";
+};
 module.exports = User;
