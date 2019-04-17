@@ -3,4 +3,4 @@ const DB = {
   Orders: []
 };
 
-modules.export = DB;
+module.exports = DB;
