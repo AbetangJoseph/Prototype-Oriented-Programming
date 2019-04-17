@@ -1,7 +1,4 @@
 let DB = require("./tempDB");
-console.log(DB);
-
-//ID
 let id = 0;
 
 function User(name, email, password) {
@@ -27,4 +24,19 @@ User.prototype.save = function() {
   };
   DB["Users"].push(user) ? "saved" : "error";
 };
+
+User.prototype.readSingleUser = function(id) {
+  if (typeof id === "number") {
+    let user = DB.Users.filter(e => e.id === id);
+    if (user.length === 0) {
+      return console.log("No such User");
+    } else {
+      return console.log(user[0]);
+    }
+  } else {
+    return console.log("Invalid: ID must be a Number");
+  }
+};
+
+
 module.exports = User;
