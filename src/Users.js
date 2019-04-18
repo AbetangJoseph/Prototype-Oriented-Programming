@@ -14,13 +14,13 @@ function User(name, email, password) {
   this.id = idGenerator();
 }
 
-User.prototype.save = function() {
+User.prototype.createUser = function() {
   user = {
+    id: this.id,
     name: this.name,
     email: this.email,
     password: this.password,
-    isAdmin: this.isAdmin,
-    id: this.id
+    isAdmin: this.isAdmin
   };
   DB["Users"].push(user) ? "saved" : "error";
 };
@@ -29,14 +29,28 @@ User.prototype.readSingleUser = function(id) {
   if (typeof id === "number") {
     let user = DB.Users.filter(e => e.id === id);
     if (user.length === 0) {
-      return console.log("No such User");
+      return console.log("ERROR: No such User");
     } else {
       return console.log(user[0]);
     }
   } else {
-    return console.log("Invalid: ID must be a Number");
+    return console.log("INVALID: ID must be a Number");
   }
 };
 
+User.prototype.updateUser = function(name, email, password) {
+  if (name == "" || email == "" || password == "") {
+    return console.log("WARNING: To update, all feilds must be filled");
+  } else {
+    DB.Users.map(e => {
+      if (e.id === this.id) {
+        e.name = name;
+        e.email = email;
+        e.password = password;
+      }
+    });
+    return console.log("Success: Record Updated");
+  }
+};
 
 module.exports = User;
