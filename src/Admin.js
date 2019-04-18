@@ -18,3 +18,12 @@ Admin.prototype.readAllUsers = function() {
   }
 };
 
+Admin.prototype.deleteAllUsers = function() {
+  let user = DB.Users.filter(e => e.isAdmin === false && e.isDeleted === false);
+  if (user.length === 0) {
+    return console.log("INFO: No users in Database");
+  } else {
+    console.log("SUCCESS: Users Deleted");
+    return user.map(e => (e.isDeleted = true));
+  }
+};
