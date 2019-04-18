@@ -1,0 +1,26 @@
+{
+  "name": "Prototype-Oriented-Programming",
+  "version": "1.0.0",
+  "description": "A simulation of a simple CRUD e-commerce platform using the Prototype Oriented Programming Paradigm",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbetangJoseph/Prototype-Oriented-Programming.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AbetangJoseph/Prototype-Oriented-Programming/issues"
+  },
+  "homepage": "https://github.com/AbetangJoseph/Prototype-Oriented-Programming#readme",
+  "devDependencies": {
+    "jest": "^24.7.1"
+  }
+}

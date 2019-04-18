@@ -1,4 +1,5 @@
 let DB = require("./tempDB");
+
 let id = 0;
 
 function User(name, email, password) {
@@ -50,6 +51,19 @@ User.prototype.updateUser = function(name, email, password) {
       }
     });
     return console.log("Success: Record Updated");
+  }
+};
+
+User.prototype.searchUserByName = function(name) {
+  if (name == "" || typeof name !== "string") {
+    return console.log("WARNING: Search by name");
+  } else {
+    let user = DB.Users.filter(e => e.name === name);
+    if (user.length === 0) {
+      return console.log("False");
+    } else {
+      return console.log(user[0]);
+    }
   }
 };
 
