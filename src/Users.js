@@ -79,12 +79,4 @@ User.prototype.searchUserByName = function(name) {
   }
 };
 
-let user1 = new User("user1", "user1@gmail.com", "1er");
-let user2 = new User("user2", "user2@gmail.com", "2af");
-let user3 = new User("user3", "user3@gmail.com", "3af");
-
-user1.createUser();
-user2.createUser();
-user3.createUser();
-
 module.exports = User;

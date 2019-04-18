@@ -9,12 +9,21 @@ function Admin(name, email, password) {
 Admin.prototype = Object.create(User.prototype);
 Admin.prototype.constructor = Admin;
 
-Admin.prototype.readAllUsers = function() {
+Admin.prototype.getAllUsers = function() {
   let user = DB.Users.filter(e => e.isAdmin === false && e.isDeleted === false);
   if (user.length === 0) {
     return console.log("INFO: No users in Database");
   } else {
     return console.log(user);
+  }
+};
+Admin.prototype.deleteUser = function(id) {
+  let user = DB.Users.filter(e => e.id === id && e.isAdmin === false);
+  if (user.length === 0) {
+    return console.log("ERROR: No such user");
+  } else {
+    console.log("SUCCESS: User Deleted");
+    return user.map(e => (e.isDeleted = true));
   }
 };
 
