@@ -60,9 +60,9 @@ User.prototype.updateUser = function(name, email, password) {
         e.name = name;
         e.email = email;
         e.password = password;
+        return console.log("SUCCESS: Record Updated");
       }
     });
-    return console.log("Success: Record Updated");
   }
 };
 
@@ -79,12 +79,5 @@ User.prototype.searchUserByName = function(name) {
   }
 };
 
-let user1 = new User("Amakiri sentance", "gam@.com", "mehha");
-let user2 = new User("joe0", "gam@d.com", "mehha");
-let user3 = new User("joe0", "gam@dy.com", "mehha");
-
-user1.createUser();
-user2.createUser();
-user3.createUser();
 
 module.exports = User;
