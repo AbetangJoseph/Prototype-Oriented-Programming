@@ -3,27 +3,36 @@ let DB = require("./tempDB");
 let id = 0;
 
 function User(name, email, password) {
+  this.name = name;
+  this.email = email;
+  this.password = password;
+  this.isAdmin = false;
+}
+
+User.prototype.createUser = function() {
   //GENERATING USER ID STARTING FROM 1
   function idGenerator() {
     id == 0 ? (id = 1) : (id = ++id);
     return id;
   }
-  this.name = name;
-  this.email = email;
-  this.password = password;
-  this.isAdmin = false;
-  this.id = idGenerator();
-}
-
-User.prototype.createUser = function() {
-  user = {
-    id: this.id,
-    name: this.name,
-    email: this.email,
-    password: this.password,
-    isAdmin: this.isAdmin
-  };
-  DB["Users"].push(user) ? "saved" : "error";
+  if (this.name == "" || this.email == "" || this.password == "") {
+    return console.log("WARNING: All feilds are required");
+  } else {
+    let user = DB.Users.filter(e => e.email === this.email);
+    if (user.length === 0) {
+      user_payload = {
+        id: idGenerator(),
+        name: this.name,
+        email: this.email,
+        password: this.password,
+        isAdmin: this.isAdmin
+      };
+      DB["Users"].push(user_payload);
+      return console.log("SUCCESS: User created");
+    } else {
+      return console.log("ERROR: Email already exists");
+    }
+  }
 };
 
 User.prototype.readSingleUser = function(id) {
@@ -66,5 +75,12 @@ User.prototype.searchUserByName = function(name) {
     }
   }
 };
+
+let user1 = new User("e", "gam@.com", "mehha");
+let user2 = new User("joe0", "gam@d.com", "mehha");
+
+user1.createUser();
+user2.createUser();
+// console.log(DB);
 
 module.exports = User;
