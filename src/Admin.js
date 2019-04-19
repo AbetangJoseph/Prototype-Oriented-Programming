@@ -1,5 +1,7 @@
 let DB = require("./tempDB");
 let User = require("./Users");
+let Order = require("./Orders");
+
 
 function Admin(name, email, password) {
   User.call(this, name, email, password); //APPLYING THE INSTANCE VARIABLES OF USER OBJECT ON ADMIN
@@ -36,3 +38,4 @@ Admin.prototype.deleteAllUsers = function() {
     return user.map(e => (e.isDeleted = true));
   }
 };
+
