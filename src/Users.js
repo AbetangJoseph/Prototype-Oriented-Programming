@@ -84,7 +84,7 @@ User.prototype.makeOrder = function(...products) {
   if (products.length === 0) {
     return console.log("WARNING: Input cannot be empty");
   } else {
-    Order.prototype.createOrder(products, (id = this.id));
+    Order.prototype.createOrder(products, (this.id));
   }
 };
 
@@ -96,5 +96,5 @@ let user2 = new User("Joe2", "user1@gmail.com2", "pass232");
 user1.createUser();
 user2.createUser();
 
-user1.makeOrder("razor", "soap");
 user2.makeOrder("razor", "soap", "book");
+user1.makeOrder("razor", "soap");
