@@ -65,6 +65,10 @@ Admin.prototype.deleteOneOrder = function(orderId) {
   }
 };
 
+Admin.prototype.deleteAllOrders = function() {
+  DB.Orders.map(e => e.isDeleted = true)
+};
+
 let admin1 = new Admin("admin1", "admin1@gmail.com", "394jr");
 admin1.createUser();
 
