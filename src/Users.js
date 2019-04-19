@@ -1,5 +1,5 @@
-let DB = require("./tempDB");
-
+const DB = require("./tempDB");
+const Order = require("./Orders");
 let id = 0;
 
 function User(name, email, password) {
@@ -18,7 +18,7 @@ function User(name, email, password) {
 
 User.prototype.createUser = function() {
   if (this.name == "" || this.email == "" || this.password == "") {
-    return console.log("WARNING: All feilds are required");
+    return "WARNING: All feilds are required";
   } else {
     let user = DB.Users.filter(e => e.email === this.email);
     if (user.length === 0) {
@@ -31,9 +31,9 @@ User.prototype.createUser = function() {
         isDeleted: this.isDeleted
       };
       DB["Users"].push(user_payload);
-      return console.log("SUCCESS: Account created");
+      return "SUCCESS: Account created";
     } else {
-      return console.log("ERROR: Email already exists");
+      return "ERROR: Email already exists";
     }
   }
 };
@@ -76,6 +76,14 @@ User.prototype.searchUserByName = function(name) {
     } else {
       return console.log(user);
     }
+  }
+};
+
+User.prototype.makeOrder = function(...products) {
+  if (products.length === 0) {
+    return console.log("WARNING: Input cannot be empty");
+  } else {
+    Order.prototype.createOrder(products, (id = this.id));
   }
 };
 
