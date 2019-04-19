@@ -2,7 +2,6 @@ let DB = require("./tempDB");
 let User = require("./Users");
 let Order = require("./Orders");
 
-
 function Admin(name, email, password) {
   User.call(this, name, email, password); //APPLYING THE INSTANCE VARIABLES OF USER OBJECT ON ADMIN
   this.isAdmin = true;
@@ -39,3 +38,13 @@ Admin.prototype.deleteAllUsers = function() {
   }
 };
 
+Admin.prototype.getAllOders = function() {
+  const allOrders = DB.Orders.map(e => e);
+  return console.log(allOrders);
+};
+
+let admin1 = new Admin('admin1','admin1@gmail.com','394jr')
+admin1.createUser()
+
+admin1.makeOrder('pen','book')
+admin1.getAllOders()

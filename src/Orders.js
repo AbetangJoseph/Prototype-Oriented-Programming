@@ -35,17 +35,20 @@ function Order(products, id) {
   }-${date.getUTCFullYear()}`;
   this.order_id = idGenerator();
   this.products = products;
+  this.isDeleted = false;
 
   order_payload = {
     user_id: this.user_id,
     timeOfOrder: this.timeOfOrder,
     dateOfOrder: this.dateOfOrder,
     order_id: this.order_id,
+    isDeleted: this.isDeleted,
     products: this.products
   };
 
   DB["Orders"].push(order_payload);
-  return console.log("SUCCESS: Successfully saved");
+
+  return console.log("SUCCESS: Order was successful");
 }
 
 Order.prototype.createOrder = function(products, id) {
