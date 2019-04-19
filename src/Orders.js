@@ -31,7 +31,7 @@ function Order(products, id) {
     second: "2-digit"
   });
   this.dateOfOrder = `${date.getDate()}-${
-    months[date.getDay() - 1]
+    months[date.getMonth()]
   }-${date.getUTCFullYear()}`;
   this.order_id = OrderIdGenerator();
   this.products = products;
