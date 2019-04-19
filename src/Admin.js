@@ -39,12 +39,14 @@ Admin.prototype.deleteAllUsers = function() {
 };
 
 Admin.prototype.getAllOders = function() {
-  const allOrders = DB.Orders.map(e => e);
+  const allOrders = DB.Orders.filter(e => e.isDeleted === false);
   return console.log(allOrders);
 };
 
 Admin.prototype.getOneOrder = function(orderId) {
-  let order = DB.Orders.filter(e => e.order_id === orderId && e.isDeleted === false);
+  let order = DB.Orders.filter(
+    e => e.order_id === orderId && e.isDeleted === false
+  );
   if (order.length === 0) {
     return console.log("INFO: No such order in Database");
   } else {
@@ -52,14 +54,18 @@ Admin.prototype.getOneOrder = function(orderId) {
   }
 };
 
-
-
-
+Admin.prototype.deleteOneOrder = function(orderId) {
+  let order = DB.Orders.filter(
+    e => e.order_id === orderId && e.isDeleted === false
+  );
+  if (order.length === 0) {
+    return console.log("INFO: No such order in Database");
+  } else {
+    order.map(e => (e.isDeleted = true));
+  }
+};
 
 let admin1 = new Admin("admin1", "admin1@gmail.com", "394jr");
 admin1.createUser();
 
 admin1.makeOrder("pen", "book", "admin");
-// admin1.getAllOders();
-
-admin1.getOneOrder(3);
