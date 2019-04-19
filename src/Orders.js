@@ -48,5 +48,8 @@ function Order(products, id) {
   return console.log("SUCCESS: Successfully saved");
 }
 
+Order.prototype.createOrder = function(products, id) {
+  new Order(products, id);
+};
 
 module.exports = Order;
