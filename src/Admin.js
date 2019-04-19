@@ -1,6 +1,6 @@
 let DB = require("./tempDB");
 let User = require("./Users");
-let Order = require("./Orders");
+// let Order = require("./Orders");
 
 function Admin(name, email, password) {
   User.call(this, name, email, password); //APPLYING THE INSTANCE VARIABLES OF USER OBJECT ON ADMIN
@@ -43,8 +43,23 @@ Admin.prototype.getAllOders = function() {
   return console.log(allOrders);
 };
 
-let admin1 = new Admin('admin1','admin1@gmail.com','394jr')
-admin1.createUser()
+Admin.prototype.getOneOrder = function(orderId) {
+  let order = DB.Orders.filter(e => e.order_id === orderId && e.isDeleted === false);
+  if (order.length === 0) {
+    return console.log("INFO: No such order in Database");
+  } else {
+    return console.log(order[0]);
+  }
+};
 
-admin1.makeOrder('pen','book')
-admin1.getAllOders()
+
+
+
+
+let admin1 = new Admin("admin1", "admin1@gmail.com", "394jr");
+admin1.createUser();
+
+admin1.makeOrder("pen", "book", "admin");
+// admin1.getAllOders();
+
+admin1.getOneOrder(3);

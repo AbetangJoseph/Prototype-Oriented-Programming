@@ -20,7 +20,7 @@ function Order(products, id) {
     "December"
   ];
 
-  function idGenerator() {
+  function OrderIdGenerator() {
     order_id == 0 ? (order_id = 1) : (order_id = ++order_id);
     return order_id;
   }
@@ -33,7 +33,7 @@ function Order(products, id) {
   this.dateOfOrder = `${date.getDate()}-${
     months[date.getDay() - 1]
   }-${date.getUTCFullYear()}`;
-  this.order_id = idGenerator();
+  this.order_id = OrderIdGenerator();
   this.products = products;
   this.isDeleted = false;
 

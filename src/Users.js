@@ -2,13 +2,14 @@ const DB = require("./tempDB");
 const Order = require("./Orders");
 let id = 0;
 
+//GENERATING USER ID STARTING FROM 1
+function idGenerator() {
+  id == 0 ? (id = 1) : (id = ++id);
+  return id;
+}
+
 function User(name, email, password) {
-  //GENERATING USER ID STARTING FROM 1
-  function idGenerator() {
-    id == 0 ? (id = 1) : (id = ++id);
-    return id;
-  }
-  this.id = idGenerator();
+  this.id = idGenerator(id);
   this.name = name;
   this.email = email;
   this.password = password;
@@ -88,3 +89,12 @@ User.prototype.makeOrder = function(...products) {
 };
 
 module.exports = User;
+
+let user1 = new User("Joe", "user1@gmail.com", "pass23");
+let user2 = new User("Joe2", "user1@gmail.com2", "pass232");
+
+user1.createUser();
+user2.createUser();
+
+user1.makeOrder("razor", "soap");
+user2.makeOrder("razor", "soap", "book");
