@@ -40,7 +40,11 @@ Admin.prototype.deleteAllUsers = function() {
 
 Admin.prototype.getAllOders = function() {
   const allOrders = DB.Orders.filter(e => e.isDeleted === false);
-  return console.log(allOrders);
+  if (allOrders.length === 0) {
+    return console.log("INFO: No order in Database");
+  } else {
+    return console.log(allOrders);
+  }
 };
 
 Admin.prototype.getOneOrder = function(orderId) {
@@ -62,11 +66,13 @@ Admin.prototype.deleteOneOrder = function(orderId) {
     return console.log("INFO: No such order in Database");
   } else {
     order.map(e => (e.isDeleted = true));
+    console.log(`SUCCESS: Order with id ${orderId} has been deleted`);
+    return `SUCCESS: Order with id ${orderId} has been deleted`;
   }
 };
 
 Admin.prototype.deleteAllOrders = function() {
-  DB.Orders.map(e => e.isDeleted = true)
+  DB.Orders.map(e => (e.isDeleted = true));
 };
 
 let admin1 = new Admin("admin1", "admin1@gmail.com", "394jr");
