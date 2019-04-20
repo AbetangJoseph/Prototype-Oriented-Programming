@@ -73,9 +73,9 @@ User.prototype.searchUserByName = function(name) {
   } else {
     let user = DB.Users.filter(e => e.name === name);
     if (user.length === 0) {
-      return console.log("False");
+      return "False";
     } else {
-      return console.log(user);
+      return user[0];
     }
   }
 };

@@ -66,3 +66,24 @@ describe("CAN UPDATE USER DETAILS", () => {
     );
   });
 });
+
+describe("CAN SEARCH FOR USER BY NAME", () => {
+  it("Should return a warning if input(s) is empty or not a string type", function() {
+    expect(user3.searchUserByName("")).toMatch("WARNING: Search by name");
+  });
+
+  it("Should return false if no name found in DB", function() {
+    expect(user3.searchUserByName("Traversy")).toMatch("False");
+  });
+
+  it("Should return user object if the user is found", function() {
+    expect(user3.searchUserByName("Young")).toEqual({
+      id: 3,
+      name: "Young",
+      email: "Young@gmail.com",
+      password: "Young123",
+      isAdmin: false,
+      isDeleted: false
+    });
+  });
+});
