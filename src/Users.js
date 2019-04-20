@@ -41,14 +41,14 @@ User.prototype.createUser = function() {
 
 User.prototype.readSingleUser = function(id) {
   if (typeof id === "number") {
-    let user = DB.Users.filter(e => e.id === id);
-    if (user.length === 0) {
-      return console.log("ERROR: No such User");
+    let user = DB.Users.find(e => e.id === id);
+    if (!user) {
+      return "INFO: No such User";
     } else {
-      return console.log(user[0]);
+      return user;
     }
   } else {
-    return console.log("INVALID: ID must be a Number");
+    return "INVALID: ID must be a Number";
   }
 };
 
@@ -69,7 +69,7 @@ User.prototype.updateUser = function(name, email, password) {
 
 User.prototype.searchUserByName = function(name) {
   if (name == "" || typeof name !== "string") {
-    return console.log("WARNING: Search by name");
+    return "WARNING: Search by name";
   } else {
     let user = DB.Users.filter(e => e.name === name);
     if (user.length === 0) {
@@ -96,5 +96,5 @@ let user2 = new User("Joe2", "user1@gmail.com2", "pass232");
 user1.createUser();
 user2.createUser();
 
-user2.makeOrder("razor", "soap", "book");
-user1.makeOrder("perfum", "oil");
+// user2.makeOrder("razor", "soap", "book");
+// user1.makeOrder("perfum", "oil");
