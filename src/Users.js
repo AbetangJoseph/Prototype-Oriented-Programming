@@ -54,16 +54,16 @@ User.prototype.readSingleUser = function(id) {
 
 User.prototype.updateUser = function(name, email, password) {
   if (name == "" || email == "" || password == "") {
-    return console.log("WARNING: To update, all feilds must be filled");
+    return "WARNING: To update, all feilds must be filled";
   } else {
     DB.Users.map(e => {
       if (e.id === this.id) {
         e.name = name;
         e.email = email;
         e.password = password;
-        return console.log("SUCCESS: Record Updated");
       }
     });
+    return "SUCCESS: Record Updated";
   }
 };
 
@@ -95,7 +95,11 @@ module.exports = User;
 
 // user1.createUser();
 // user2.createUser();
+// console.log(DB.Users);
 
-// user2.readSingleUser(2);
-// user2.makeOrder("razor", "soap", "book");
-// user1.makeOrder("perfum", "oil");
+// user2.updateUser("james", "j@gmail", "3fd");
+
+// // user2.readSingleUser(2);
+// // user2.makeOrder("razor", "soap", "book");
+// // user1.makeOrder("perfum", "oil");
+// console.log(DB.Users);
