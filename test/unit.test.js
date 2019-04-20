@@ -1,4 +1,5 @@
 const User = require("../src/Users");
+const Order = require("../src/Orders");
 
 const user1 = new User("", "user1@gmail.com", "pass123");
 const user2 = new User("Joseph", "user2@gmail.com", "pass123joe");
@@ -85,5 +86,11 @@ describe("CAN SEARCH FOR USER BY NAME", () => {
       isAdmin: false,
       isDeleted: false
     });
+  });
+});
+
+describe("CAN MAKE ORDER", () => {
+  it("Should return a warning if input(s) is empty or not a string type", function() {
+    expect(user2.makeOrder()).toMatch("WARNING: Input cannot be empty");
   });
 });
