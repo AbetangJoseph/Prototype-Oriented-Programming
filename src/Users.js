@@ -32,7 +32,7 @@ User.prototype.createUser = function() {
         isDeleted: this.isDeleted
       };
       DB["Users"].push(user_payload);
-      return "SUCCESS: Account created";
+      return "SUCCESS: Account saved";
     } else {
       return "ERROR: Email already exists";
     }
