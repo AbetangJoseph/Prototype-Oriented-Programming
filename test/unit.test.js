@@ -116,3 +116,24 @@ describe("CREATE NEW ADMIN USER", () => {
     expect(admin2.createUser()).toMatch("ERROR: Email already exists");
   });
 });
+
+describe("ADMIN CAN READ SINGLE USER BY ID", () => {
+  it("Should return 'invalid' if its a non-number input", function() {
+    expect(admin2.readSingleUser("")).toMatch("INVALID: ID must be a Number");
+  });
+
+  it("Should return no such user if no such id found in db", function() {
+    expect(admin2.readSingleUser(0)).toMatch("INFO: No such User");
+  });
+
+  it("Should return no such user if no such id found in db", function() {
+    expect(admin2.readSingleUser(6)).toEqual({
+      id: 6,
+      name: "admin3",
+      email: "admin3@gmail.com",
+      password: "pass3",
+      isAdmin: true,
+      isDeleted: false
+    });
+  });
+});
