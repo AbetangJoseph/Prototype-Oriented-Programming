@@ -21,3 +21,22 @@ describe("CREATE NEW USER", () => {
     expect(user2.createUser()).toMatch("ERROR: Email already exists");
   });
 });
+
+describe("CAN READ SINGLE USER BY ID FROM 'USERS' OBJECT", () => {
+  it("Should return 'invalid' if its a non-number input", function() {
+    expect(user2.readSingleUser("")).toMatch("INVALID: ID must be a Number");
+  });
+  it("Should return no such user if no such id found in db", function() {
+    expect(user2.readSingleUser(3)).toMatch("INFO: No such User");
+  });
+  it("Should return no such user if no such id found in db", function() {
+    expect(user2.readSingleUser(2)).toEqual({
+      id: 2,
+      name: "Joseph",
+      email: "user2@gmail.com",
+      password: "pass123",
+      isAdmin: false,
+      isDeleted: false
+    });
+  });
+});
