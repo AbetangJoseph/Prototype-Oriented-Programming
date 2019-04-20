@@ -98,3 +98,21 @@ describe("CAN MAKE ORDER", () => {
     expect(user2.makeOrder()).toMatch("WARNING: Input cannot be empty");
   });
 });
+
+describe("CREATE NEW ADMIN USER", () => {
+  it("Should instantiate a new admin user", function() {
+    expect(admin2).toBeDefined();
+  });
+
+  it("Should create admin and return success message", function() {
+    expect(admin2Save).toMatch("SUCCESS: Account saved");
+  });
+
+  it("Should return warning message when input(s) missing", function() {
+    expect(admin1MissingInput).toMatch("WARNING: All feilds are required");
+  });
+
+  it("Should return error message if the same email already exists", function() {
+    expect(admin2.createUser()).toMatch("ERROR: Email already exists");
+  });
+});
