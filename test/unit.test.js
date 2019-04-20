@@ -1,13 +1,17 @@
-const User = require("../src/Users");
-const Order = require("../src/Orders");
-
-const user1 = new User("", "user1@gmail.com", "pass123");
-const user2 = new User("Joseph", "user2@gmail.com", "pass123joe");
-const user3 = new User("Victor", "vic@gmail.com", "pass123vic");
-
-const user1MissingInput = user1.createUser();
-const user2Save = user2.createUser();
-user3.createUser();
+const {
+  User,
+  Admin,
+  user1,
+  user2,
+  user3,
+  admin1,
+  admin2,
+  admin3,
+  user1MissingInput,
+  user2Save,
+  admin1MissingInput,
+  admin2Save
+} = require("../src/paths");
 
 describe("CREATE NEW USER", () => {
   it("Should instantiate a new user", function() {

@@ -5,6 +5,7 @@ let Order = require("./Orders");
 function Admin(name, email, password) {
   User.call(this, name, email, password); //APPLYING THE INSTANCE VARIABLES OF USER OBJECT ON ADMIN
   this.isAdmin = true;
+  
 }
 
 Admin.prototype = Object.create(User.prototype);
@@ -13,9 +14,9 @@ Admin.prototype.constructor = Admin;
 Admin.prototype.getAllUsers = function() {
   let user = DB.Users.filter(e => e.isAdmin === false && e.isDeleted === false);
   if (user.length === 0) {
-    return console.log("INFO: No users in Database");
+    return "INFO: No users in Database";
   } else {
-    return console.log(user);
+    return user;
   }
 };
 Admin.prototype.deleteUser = function(id) {
@@ -58,7 +59,9 @@ Admin.prototype.deleteAllOrders = function() {
   Order.prototype.deleteAllOrders();
 };
 
-let admin1 = new Admin("admin1", "admin1@gmail.com", "394jr");
-admin1.createUser();
+module.exports = Admin;
 
-admin1.makeOrder("pen", "book", "admin");
+// let admin1 = new Admin("admin1", "admin1@gmail.com", "394jr");
+// admin1.createUser();
+
+// admin1.makeOrder("pen", "book", "admin");
