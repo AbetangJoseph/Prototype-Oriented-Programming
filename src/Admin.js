@@ -1,6 +1,6 @@
-let DB = require("./tempDB");
+let DB = require("./DB");
 let User = require("./Users");
-// let Order = require("./Orders");
+let Order = require("./Orders");
 
 function Admin(name, email, password) {
   User.call(this, name, email, password); //APPLYING THE INSTANCE VARIABLES OF USER OBJECT ON ADMIN
@@ -58,6 +58,21 @@ Admin.prototype.getOneOrder = function(orderId) {
   }
 };
 
+Admin.prototype.UpdateOrder = function(orderId, changeFrom, changeTo) {
+  if (orderId === "" || changeFrom === "" || changeTo === "") {
+    return console.log("WARNING: All inputs are required");
+  } else {
+    let orderObject = DB.Orders.find(e => e.order_id === orderId);
+
+    if (orderObject.products.indexOf(changeFrom) === -1)
+      return console.log("Item to change not found");
+
+    orderObject.products.map((item, i) =>
+      item === changeFrom ? (orderObject.products[i] = changeTo) : item
+    );
+  }
+};
+
 Admin.prototype.deleteOneOrder = function(orderId) {
   let order = DB.Orders.filter(
     e => e.order_id === orderId && e.isDeleted === false
@@ -79,3 +94,7 @@ let admin1 = new Admin("admin1", "admin1@gmail.com", "394jr");
 admin1.createUser();
 
 admin1.makeOrder("pen", "book", "admin");
+// admin1.getAllOders();
+admin1.UpdateOrder(1, "razor", "beans");
+admin1.getAllOders();
+// console.log(DB.Orders);

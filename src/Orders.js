@@ -1,4 +1,4 @@
-let DB = require("./tempDB");
+let DB = require("./DB");
 
 let date = new Date();
 

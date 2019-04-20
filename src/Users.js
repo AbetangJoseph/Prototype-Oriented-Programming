@@ -1,4 +1,4 @@
-const DB = require("./tempDB");
+const DB = require("./DB");
 const Order = require("./Orders");
 let id = 0;
 
@@ -97,4 +97,4 @@ user1.createUser();
 user2.createUser();
 
 user2.makeOrder("razor", "soap", "book");
-user1.makeOrder("razor", "soap");
+user1.makeOrder("perfum", "oil");
