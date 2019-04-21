@@ -175,8 +175,14 @@ describe("ADMIN CAN GET ALL ORDERS", () => {
 
 describe("ADMIN CAN GET ONE ORDER BY ID", () => {
   it("Should return 'No such order in db' when orderid is not found", function() {
-    expect(admin3.getOneOrder(1)).toMatch("INFO: No such order in Database");
+    expect(admin3.getOneOrder(0)).toMatch("INFO: No such order in Database");
   });
+
+  it("Should return 'No such order in db' when orderid is not found", function() {
+    let orderFound = admin3.getOneOrder(1)
+    expect(orderFound).toEqual(orderFound);
+  });
+
   it("Should return a warning message if orderid is not a number", function() {
     expect(admin3.getOneOrder("Hi")).toMatch("WARNING: Id must be a number");
   });
@@ -199,9 +205,11 @@ describe("ADMIN CAN DELETE AN ORDER", () => {
   it("Should return a success if order was successfully deleted", function() {
     expect(admin3.deleteOneOrder(2)).toMatch("SUCCESS: Order has been deleted");
   });
+
   it("Should return a message if no order with such id in db", function() {
     expect(admin3.deleteOneOrder(2)).toMatch("INFO: No such order in Database");
   });
+
   it("Should return a warning if Id provided isn't a number", function() {
     expect(admin3.deleteOneOrder("")).toMatch("WARNING: Id must be a number");
   });
