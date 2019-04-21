@@ -82,7 +82,7 @@ Order.prototype.UpdateOrder = function(orderId, changeFrom, changeTo) {
     let orderObject = DB.Orders.find(
       e => e.order_id === orderId && e.isDeleted === false
     );
-    if (orderObject === undefined) return "INFO: Item to change not found";
+    if (orderObject === undefined) return "INFO: OrderID is incorrect";
 
     if (orderObject.products.indexOf(changeFrom) === -1)
       return "INFO: Item to change not found";

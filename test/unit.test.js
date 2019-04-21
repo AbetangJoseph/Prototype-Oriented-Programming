@@ -194,7 +194,7 @@ describe("ADMIN CAN UPDATE ORDER", () => {
       "WARNING: All inputs are required"
     );
   });
-  
+
   it("Should return an info message if the order object is not found", function() {
     expect(admin3.UpdateOrder(2, "perfume", "mackbook")).toMatch(
       "INFO: Item to change not found"
@@ -207,9 +207,9 @@ describe("ADMIN CAN UPDATE ORDER", () => {
     );
   });
 
-  it("Should return success message if order updated", function() {
+  it("Should return a message if the order id is not found", function() {
     expect(admin3.UpdateOrder(0, "milo", "milk")).toMatch(
-      "INFO: Item to change not found"
+      "INFO: OrderID is incorrect"
     );
   });
 });
@@ -229,7 +229,7 @@ describe("ADMIN CAN DELETE AN ORDER", () => {
 });
 
 describe("ADMIN CAN DELETE ALL", () => {
-  it("Should return a message if no order with such id in db", function() {
+  it("Should return a success message if all orders are deleted", function() {
     expect(admin3.deleteAllOrders()).toMatch("SUCCESS: All orders deleted");
   });
 });
