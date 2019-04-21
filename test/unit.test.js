@@ -180,3 +180,16 @@ describe("ADMIN CAN GET ONE ORDER BY ID", () => {
     expect(admin3.getOneOrder("Hi")).toMatch("WARNING: Id must be a number");
   });
 });
+
+describe("ADMIN CAN UPDATE ORDER", () => {
+  it("Should return warning if any input is empty", function() {
+    expect(admin3.UpdateOrder(2, "", "pen")).toMatch(
+      "WARNING: All inputs are required"
+    );
+  });
+  it("Should return an info message if the order object is not found", function() {
+    expect(admin3.UpdateOrder(2, "perfume", "mackbook")).toMatch(
+      "INFO: Item to change not found"
+    );
+  });
+});

@@ -77,16 +77,15 @@ Order.prototype.getOneOrder = function(orderId) {
 
 Order.prototype.UpdateOrder = function(orderId, changeFrom, changeTo) {
   if (orderId === "" || changeFrom === "" || changeTo === "") {
-    return console.log("WARNING: All inputs are required");
+    return "WARNING: All inputs are required";
   } else {
     let orderObject = DB.Orders.find(
       e => e.order_id === orderId && e.isDeleted === false
     );
-    if (orderObject === undefined)
-      return console.log("Item to change not found");
+    if (orderObject === undefined) return "INFO: Item to change not found";
 
     if (orderObject.products.indexOf(changeFrom) === -1)
-      return console.log("Item to change not found");
+      return "INFO: Item to change not found";
 
     orderObject.products.map((item, i) =>
       item === changeFrom ? (orderObject.products[i] = changeTo) : item
