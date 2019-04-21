@@ -1,6 +1,7 @@
 const {
   User,
   Admin,
+  Orders,
   user1,
   user2,
   user3,
@@ -142,6 +143,7 @@ describe("ADMIN CAN DELETE A USER BY ID", () => {
   it("Should return a success message if user is deleted", function() {
     expect(admin3.deleteUser(7)).toMatch("SUCCESS: User Deleted");
   });
+
   it("Should return an info message if the user is not in DB", function() {
     expect(admin3.deleteUser(7)).toMatch("INFO: No such user");
   });
@@ -151,5 +153,14 @@ describe("ADMIN CAN GET ALL USERS", () => {
   it("Should return a warning if input(s) is empty or not a string type", function() {
     const allUsers = admin3.getAllUsers();
     expect(allUsers).toEqual(allUsers);
+  });
+});
+
+describe("ADMIN CAN DELETE ALL USERS", () => {
+  it("Should return a success message if users are deleted", function() {
+    expect(admin3.deleteAllUsers()).toMatch("SUCCESS: Users Deleted");
+  });
+  it("Should return NO users in DB if it is empty", function() {
+    expect(admin3.deleteAllUsers()).toMatch("INFO: No users in Database");
   });
 });
