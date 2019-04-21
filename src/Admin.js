@@ -5,7 +5,6 @@ let Order = require("./Orders");
 function Admin(name, email, password) {
   User.call(this, name, email, password); //APPLYING THE INSTANCE VARIABLES OF USER OBJECT ON ADMIN
   this.isAdmin = true;
-  
 }
 
 Admin.prototype = Object.create(User.prototype);
@@ -20,12 +19,14 @@ Admin.prototype.getAllUsers = function() {
   }
 };
 Admin.prototype.deleteUser = function(id) {
-  let user = DB.Users.filter(e => e.id === id && e.isAdmin === false);
+  let user = DB.Users.filter(
+    e => e.id === id && e.isDeleted === false && e.isAdmin === false
+  );
   if (user.length === 0) {
-    return console.log("ERROR: No such user");
+    return "INFO: No such user";
   } else {
-    console.log("SUCCESS: User Deleted");
-    return user.map(e => (e.isDeleted = true));
+    user.map(e => (e.isDeleted = true));
+    return "SUCCESS: User Deleted";
   }
 };
 
