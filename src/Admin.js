@@ -45,7 +45,11 @@ Admin.prototype.getAllOders = function() {
 };
 
 Admin.prototype.getOneOrder = function(orderId) {
-  return Order.prototype.getOneOrder(orderId);
+  if (typeof orderId === "number") {
+    return Order.prototype.getOneOrder(orderId);
+  } else {
+    return "WARNING: Id must be a number";
+  }
 };
 
 Admin.prototype.UpdateOrder = function(orderId, changeFrom, changeTo) {

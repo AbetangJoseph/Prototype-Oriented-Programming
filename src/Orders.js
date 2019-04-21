@@ -69,9 +69,9 @@ Order.prototype.getOneOrder = function(orderId) {
     e => e.order_id === orderId && e.isDeleted === false
   );
   if (order.length === 0) {
-    return console.log("INFO: No such order in Database");
+    return "INFO: No such order in Database";
   } else {
-    return console.log(order[0]);
+    return order[0];
   }
 };
 
