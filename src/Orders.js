@@ -101,7 +101,7 @@ Order.prototype.deleteOneOrder = function(orderId) {
     return "INFO: No such order in Database";
   } else {
     order.map(e => (e.isDeleted = true));
-    return `SUCCESS: Order has been deleted`;
+    return "SUCCESS: Order has been deleted";
   }
 };
 
