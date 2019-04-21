@@ -89,17 +89,3 @@ User.prototype.makeOrder = function(...products) {
 };
 
 module.exports = User;
-
-// let user1 = new User("Joe", "user1@gmail.com", "pass23");
-// let user2 = new User("Joe2", "user1@gmail.com2", "pass232");
-
-// user1.createUser();
-// user2.createUser();
-// console.log(DB.Users);
-
-// user2.updateUser("james", "j@gmail", "3fd");
-
-// // user2.readSingleUser(2);
-// // user2.makeOrder("razor", "soap", "book");
-// // user1.makeOrder("perfum", "oil");
-// console.log(DB.Users);

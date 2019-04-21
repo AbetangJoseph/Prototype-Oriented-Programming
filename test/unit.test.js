@@ -179,7 +179,7 @@ describe("ADMIN CAN GET ONE ORDER BY ID", () => {
   });
 
   it("Should return 'No such order in db' when orderid is not found", function() {
-    let orderFound = admin3.getOneOrder(1)
+    let orderFound = admin3.getOneOrder(1);
     expect(orderFound).toEqual(orderFound);
   });
 
@@ -194,8 +194,21 @@ describe("ADMIN CAN UPDATE ORDER", () => {
       "WARNING: All inputs are required"
     );
   });
+  
   it("Should return an info message if the order object is not found", function() {
     expect(admin3.UpdateOrder(2, "perfume", "mackbook")).toMatch(
+      "INFO: Item to change not found"
+    );
+  });
+
+  it("Should return success message if order updated", function() {
+    expect(admin3.UpdateOrder(2, "milo", "milk")).toMatch(
+      "SUCCESS: Order was updated successfully"
+    );
+  });
+
+  it("Should return success message if order updated", function() {
+    expect(admin3.UpdateOrder(0, "milo", "milk")).toMatch(
       "INFO: Item to change not found"
     );
   });

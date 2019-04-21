@@ -90,6 +90,7 @@ Order.prototype.UpdateOrder = function(orderId, changeFrom, changeTo) {
     orderObject.products.map((item, i) =>
       item === changeFrom ? (orderObject.products[i] = changeTo) : item
     );
+    return 'SUCCESS: Order was updated successfully'
   }
 };
 
@@ -106,9 +107,8 @@ Order.prototype.deleteOneOrder = function(orderId) {
 };
 
 Order.prototype.deleteAllOrders = function() {
-  if (DB.Orders.map(e => (e.isDeleted = true))) {
+  DB.Orders.map(e => (e.isDeleted = true)) 
     return 'SUCCESS: All orders deleted"';
-  }
 };
 
 module.exports = Order;

@@ -22,7 +22,6 @@ const user4 = new User("Amakiri", "amak@gmail.com", "pass123amak");
 user4.createUser();
 
 user3.makeOrder("black shoe", "mackbook");
-user1.makeOrder("book", "vitamilk");
 user2.makeOrder("sugar", "milo", "cake");
 
 module.exports = {

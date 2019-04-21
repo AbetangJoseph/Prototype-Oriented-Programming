@@ -70,7 +70,3 @@ Admin.prototype.deleteAllOrders = function() {
 
 module.exports = Admin;
 
-// let admin1 = new Admin("admin1", "admin1@gmail.com", "394jr");
-// admin1.createUser();
-
-// admin1.makeOrder("pen", "book", "admin");
