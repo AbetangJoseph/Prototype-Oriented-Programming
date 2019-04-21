@@ -58,9 +58,9 @@ Order.prototype.createOrder = function(products, id) {
 Order.prototype.getAllOders = function() {
   const allOrders = DB.Orders.filter(e => e.isDeleted === false);
   if (allOrders.length === 0) {
-    return console.log("INFO: No order in Database");
+    return "INFO: No order in Database";
   } else {
-    return console.log(allOrders);
+    return allOrders;
   }
 };
 

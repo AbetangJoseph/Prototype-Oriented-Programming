@@ -164,3 +164,9 @@ describe("ADMIN CAN DELETE ALL USERS", () => {
     expect(admin3.deleteAllUsers()).toMatch("INFO: No users in Database");
   });
 });
+
+describe("ADMIN CAN GET ALL ORDERS", () => {
+  it("Should return 'No order in db' when order db is empty", function() {
+    expect(admin3.getAllOders()).toEqual("INFO: No order in Database");
+  });
+});

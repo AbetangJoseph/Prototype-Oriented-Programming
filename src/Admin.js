@@ -41,23 +41,23 @@ Admin.prototype.deleteAllUsers = function() {
 };
 
 Admin.prototype.getAllOders = function() {
-  Order.prototype.getAllOders();
+  return Order.prototype.getAllOders();
 };
 
 Admin.prototype.getOneOrder = function(orderId) {
-  Order.prototype.getOneOrder(orderId);
+  return Order.prototype.getOneOrder(orderId);
 };
 
 Admin.prototype.UpdateOrder = function(orderId, changeFrom, changeTo) {
-  Order.prototype.UpdateOrder(orderId, changeFrom, changeTo);
+  return Order.prototype.UpdateOrder(orderId, changeFrom, changeTo);
 };
 
 Admin.prototype.deleteOneOrder = function(orderId) {
-  Order.prototype.deleteOneOrder(orderId);
+  return Order.prototype.deleteOneOrder(orderId);
 };
 
 Admin.prototype.deleteAllOrders = function() {
-  Order.prototype.deleteAllOrders();
+  return Order.prototype.deleteAllOrders();
 };
 
 module.exports = Admin;

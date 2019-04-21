@@ -1,5 +1,6 @@
 const User = require("../src/Users");
 const Admin = require("../src/Admin");
+const Orders = require("../src/Orders");
 
 const user1 = new User("", "user1@gmail.com", "pass123");
 const user2 = new User("Joseph", "user2@gmail.com", "pass123joe");
@@ -23,6 +24,7 @@ user4.createUser();
 module.exports = {
   User,
   Admin,
+  Orders,
   user1,
   user2,
   user3,
