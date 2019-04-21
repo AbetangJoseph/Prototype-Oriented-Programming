@@ -98,11 +98,10 @@ Order.prototype.deleteOneOrder = function(orderId) {
     e => e.order_id === orderId && e.isDeleted === false
   );
   if (order.length === 0) {
-    return console.log("INFO: No such order in Database");
+    return "INFO: No such order in Database";
   } else {
     order.map(e => (e.isDeleted = true));
-    console.log(`SUCCESS: Order with id ${orderId} has been deleted`);
-    return `SUCCESS: Order with id ${orderId} has been deleted`;
+    return `SUCCESS: Order has been deleted`;
   }
 };
 
