@@ -160,6 +160,7 @@ describe("ADMIN CAN DELETE ALL USERS", () => {
   it("Should return a success message if users are deleted", function() {
     expect(admin3.deleteAllUsers()).toMatch("SUCCESS: Users Deleted");
   });
+
   it("Should return NO users in DB if it is empty", function() {
     expect(admin3.deleteAllUsers()).toMatch("INFO: No users in Database");
   });
@@ -174,5 +175,8 @@ describe("ADMIN CAN GET ALL ORDERS", () => {
 describe("ADMIN CAN GET ONE ORDER BY ID", () => {
   it("Should return 'No such order in db' when orderid is not found", function() {
     expect(admin3.getOneOrder(1)).toMatch("INFO: No such order in Database");
+  });
+  it("Should return a warning message if orderid is not a number", function() {
+    expect(admin3.getOneOrder("Hi")).toMatch("WARNING: Id must be a number");
   });
 });
