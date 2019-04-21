@@ -57,7 +57,11 @@ Admin.prototype.UpdateOrder = function(orderId, changeFrom, changeTo) {
 };
 
 Admin.prototype.deleteOneOrder = function(orderId) {
-  return Order.prototype.deleteOneOrder(orderId);
+  if (typeof orderId === "number") {
+    return Order.prototype.deleteOneOrder(orderId);
+  } else {
+    return "WARNING: Id must be a number";
+  }
 };
 
 Admin.prototype.deleteAllOrders = function() {
