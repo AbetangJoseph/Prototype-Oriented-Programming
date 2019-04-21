@@ -106,7 +106,9 @@ Order.prototype.deleteOneOrder = function(orderId) {
 };
 
 Order.prototype.deleteAllOrders = function() {
-  DB.Orders.map(e => (e.isDeleted = true));
+  if (DB.Orders.map(e => (e.isDeleted = true))) {
+    return 'SUCCESS: All orders deleted"';
+  }
 };
 
 module.exports = Order;

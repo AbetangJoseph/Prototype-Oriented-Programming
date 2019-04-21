@@ -202,3 +202,9 @@ describe("ADMIN CAN DELETE AN ORDER", () => {
     expect(admin3.deleteOneOrder("")).toMatch("WARNING: Id must be a number");
   });
 });
+
+describe("ADMIN CAN DELETE ALL", () => {
+  it("Should return a message if no order with such id in db", function() {
+    expect(admin3.deleteAllOrders()).toMatch("SUCCESS: All orders deleted");
+  });
+});
