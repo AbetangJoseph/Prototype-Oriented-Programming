@@ -137,3 +137,12 @@ describe("ADMIN CAN READ SINGLE USER BY ID", () => {
     });
   });
 });
+
+describe("ADMIN CAN DELETE A USER BY ID", () => {
+  it("Should return a success message if user is deleted", function() {
+    expect(admin3.deleteUser(7)).toMatch("SUCCESS: User Deleted");
+  });
+  it("Should return an info message if the user is not in DB", function() {
+    expect(admin3.deleteUser(7)).toMatch("INFO: No such user");
+  });
+});
