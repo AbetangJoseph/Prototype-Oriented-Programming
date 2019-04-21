@@ -48,7 +48,7 @@ function Order(products, id) {
 
   DB["Orders"].push(order_payload);
 
-  return console.log("SUCCESS: Order was successful");
+  return "SUCCESS: Order was successful";
 }
 
 Order.prototype.createOrder = function(products, id) {

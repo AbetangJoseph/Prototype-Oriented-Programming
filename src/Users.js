@@ -84,7 +84,7 @@ User.prototype.makeOrder = function(...products) {
   if (products.length === 0) {
     return "WARNING: Input cannot be empty";
   } else {
-    Order.prototype.createOrder(products, this.id);
+    return Order.prototype.createOrder(products, this.id);
   }
 };
 
