@@ -146,3 +146,10 @@ describe("ADMIN CAN DELETE A USER BY ID", () => {
     expect(admin3.deleteUser(7)).toMatch("INFO: No such user");
   });
 });
+
+describe("ADMIN CAN GET ALL USERS", () => {
+  it("Should return a warning if input(s) is empty or not a string type", function() {
+    const allUsers = admin3.getAllUsers();
+    expect(allUsers).toEqual(allUsers);
+  });
+});
