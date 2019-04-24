@@ -29,6 +29,8 @@ Admin.prototype.deleteUser = function(id) {
       return "INFO: No such user";
    } else {
       user.map(e => (e.isDeleted = true));
+      console.log(user.filter(e => (e.isDeleted = true)));
+
       return "SUCCESS: User Deleted";
    }
 };

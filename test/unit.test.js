@@ -34,7 +34,7 @@ describe("CREATE NEW USER", () => {
 
 describe("CAN READ SINGLE USER BY ID FROM 'USERS' OBJECT", () => {
    it("Should return 'invalid' if its a non-number input", function() {
-      expect(user2.readSingleUser("")).toMatch("INVALID: ID must be a Number");
+      expect(user2.readSingleUser("jjj")).toMatch("INVALID: ID must be a Number");
    });
 
    it("Should return no such user if no such id found in db", function() {
@@ -79,7 +79,7 @@ describe("CAN SEARCH FOR USER BY NAME", () => {
    });
 
    it("Should return false if no name found in DB", function() {
-      expect(user3.searchUserByName("Traversy")).toMatch("False");
+      expect(user3.searchUserByName("Traversy")).toMatch("INFO: No such user");
    });
 
    it("Should return user object if the user is found", function() {

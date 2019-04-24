@@ -9,7 +9,7 @@ function idGenerator() {
 }
 
 function User(name, email, password) {
-   this.id = idGenerator(id);
+   this.id = idGenerator();
    this.name = name;
    this.email = email;
    this.password = password;
@@ -18,38 +18,27 @@ function User(name, email, password) {
 }
 
 User.prototype.save = function() {
-   if (this.name == "" || this.email == "" || this.password == "") {
+   if (this.name == "" || this.email == "" || this.password == "")
       return "WARNING: All feilds are required";
-   } else {
-      let user = DB.Users.filter(e => e.email === this.email);
-      if (user.length === 0) {
-         user_payload = {
-            id: this.id,
-            name: this.name,
-            email: this.email,
-            password: this.password,
-            isAdmin: this.isAdmin,
-            isDeleted: this.isDeleted
-         };
-         DB["Users"].push(user_payload);
-         return "SUCCESS: Account saved";
-      } else {
-         return "ERROR: Email already exists";
-      }
-   }
+
+   let user = DB.Users.filter(e => e.email === this.email);
+   if (user.length !== 0) return "ERROR: Email already exists";
+   user_payload = {
+      id: this.id,
+      name: this.name,
+      email: this.email,
+      password: this.password,
+      isAdmin: this.isAdmin,
+      isDeleted: this.isDeleted
+   };
+   DB["Users"].push(user_payload);
+   return "SUCCESS: Account saved";
 };
 
 User.prototype.readSingleUser = function(id) {
-   if (typeof id === "number") {
-      let user = DB.Users.find(e => e.id === id);
-      if (!user) {
-         return "INFO: No such User";
-      } else {
-         return user;
-      }
-   } else {
-      return "INVALID: ID must be a Number";
-   }
+   if (typeof id !== "number") return "INVALID: ID must be a Number";
+   let user = DB.Users.find(e => e.id === id);
+   return !user ? "INFO: No such User" : user;
 };
 
 User.prototype.updateUser = function(name, email, password) {
@@ -71,10 +60,12 @@ User.prototype.searchUserByName = function(name) {
    if (name == "" || typeof name !== "string") {
       return "WARNING: Search by name";
    } else {
-      let user = DB.Users.filter(e => e.name === name);
+      let user = DB.Users.filter(e => e.name === name && e.isDeleted === false);
       if (user.length === 0) {
-         return "False";
+         return "INFO: No such user";
       } else {
+         console.log("SUCCESS: Record Found");
+
          return user[0];
       }
    }
